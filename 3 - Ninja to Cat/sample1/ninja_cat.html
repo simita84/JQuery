@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<title>jQuery Assessment Ninja</title>
+	<meta charset="utf-8" />
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/jquery-ui.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('#images_list').sortable().on('click', 'img', function() {
+				var target = $(this), src = target.attr('src');
+				target.attr('src', /cat/.test(src) ? src.replace('cat', 'ninja') : src.replace('ninja', 'cat'));
+			});
+		/* 	line 1: sortable() is for the pictures to be dragged from one position to the other; and a trigger when the image is clicked
+			line 2: assigning values to variables target and src to make line 3 less confusing and short
+			line 3: short cut form of if/else statement
+				considering that the image file names used is cat1.jpg,cat2.jpg.. and respective partner picture file names are ninja1.jpg, ninja2.jpg..
+				when the image is clicked...
+				if the src attribute of #image_list (which is the img tag) has /cat/ string/word on it
+				then the src string/word which has a value of 'cat' will be replaced with 'ninja' (cat1.jpg will be replaced with ninja1.jpg)
+				else the src string/word which has a value of 'ninja' will be replaced with 'cat'
+		*/
+		});
+	</script>
+	<style>
+		ul li {list-style-type:none}
+	</style>
+</head>
+<body>
+	<div id="wrapper">
+		<h1>jQuery Assessment Ninja</h1>
+		<ul id="images_list">
+			<li><img src="img/ninja0.png" alt="layer" /></li>
+			<li><img src="img/ninja1.png" alt="layer" /></li>
+			<li><img src="img/ninja2.png" alt="layer" /></li>
+			<li><img src="img/ninja3.png" alt="layer" /></li>
+			<li><img src="img/ninja4.png" alt="layer" /></li>
+		</ul>
+	</div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="description" content="jQuery Contact Card">
+		<title>jQuery Contact Card</title>
+		<link rel="stylesheet" href="jquery_contact_card.css">
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				
+				$('form').submit(function(){
+					$('#contacts_side').append('<div class="contact_page"><h3>'+$("#first_name").val()+' '+$("#last_name").val()+ '</h3>'+
+													'<p id="page1">Click for description</p>'+
+												'</div>');
+
+					return false;
+				});
+
+				$(document).on('click', '#page1',function(){
+					$(this).parent().html('<p id="page2">' + $("#description").val() + '</p>');
+				});
+
+				$(document).on('click', '#page2',function(){
+					$(this).parent().html('<h3>' + $("#first_name").val() + ' ' + $("#last_name").val() + '</h3><p id="page1">Click for description</p>');
+				});
+
+			});
+		</script>
+	</head>
+	<body>
+		<div id="container">
+			<div id="form_side">
+				<form action="process.php" method="post">
+					<label>
+						First Name: <input type="text" name="first_name" id="first_name">
+					</label>
+					<label>
+						Last Name: <input type="text" name="last_name" id="last_name">
+					</label>
+					<label>
+						Description: <textarea name="description" id="description" placeholder="Enter description:"></textarea>
+					</label>
+					<input type="submit" value="Add User">
+				</form>
+			</div><!--end of form_side-->
+			<div id="contacts_side"></div>
+		</div><!--end of container-->
+	</body>
+</html>
